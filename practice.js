@@ -111,6 +111,8 @@ return evens;
 
 
 
+
+
 /////////////////////// EXTRA PRACTICE PROBLEMS BELOW ////////////////////
 ////////// MOVE ONTO NEXT SECTION BEFORE WORKING ON THESE ////////////////
 
@@ -132,7 +134,17 @@ var numbersArray = [1,2,34,54,55,34,32,11,19,17,54,66,13];
 */
 
 //Code Here
-
+const divider = (numbersArray) => {
+  let solution = [[],[]];
+  for (let i = 0; i < numbersArray.length; i++){
+    if (numbersArray[i] % 2 === 0){
+      solution[0].push(numbersArray[i])
+    } else if (numbersArray[i] % 2 === 1){
+      solution[1].push(numbersArray[i])
+    }
+  }
+  return solution
+}
 
 
 ////////// PROBLEM 7 //////////
@@ -153,7 +165,15 @@ var getRandomArbitrary = function() {
 */
 
 //Code Here
-
+const finder = (arr1) =>{
+  const random = getRandomArbitrary();
+  for (let i = 0; i < arr1.length; i++){
+    if (random === arr1[i]){
+      return true
+    }
+  }
+  return false;
+}
 
 
 ////////// PROBLEM 8 //////////
@@ -168,8 +188,7 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   Write a function called removeItem that is given two arguments, the first is myGroceryList, and the second is an item to remove from myGroceryList. 
   If the second argument (or the item to add or remove) matches an item in myGroceryList, remove that item from the your grocery list and return the new, updated grocery list.
 
-  Once you do that, write another function called addItem that is given two arguments, the first is myGroceryList and the second is an item to add to your grocery list. 
-  In addItem add the item you passed in to myGroceryList then return the new, updated grocery list.
+
 
   In both removeItem and addItem check to see if the 'myGroceryList' and 'item' arguments are truthy.
   If they are not, return an empty array.
@@ -182,6 +201,29 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 */
 
 //Code Here
+const removeItem = (myGroceryList,itemRemove) => {
+  if (!myGroceryList || !itemRemove) {
+    return []
+  } else {
+  for (let i = 0; i < myGroceryList.length; i++){
+    // debugger
+    if (myGroceryList[i] === itemRemove) {
+      myGroceryList.splice(i,1)
+    }
+  }
+  return myGroceryList
+}
+}
+
+// Once you do that, write another function called addItem that is given two arguments, the first is myGroceryList and the second is an item to add to your grocery list. 
+// In addItem add the item you passed in to myGroceryList then return the new, updated grocery list.
+const addItem = (myGroceryList, itemAdd) => {
+  if (!myGroceryList || !itemAdd) {
+  return []} else {
+  myGroceryList.push(itemAdd)
+  
+  return myGroceryList;}
+}
 
 
 
@@ -192,6 +234,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 */
 
 //Code Here
+const maker = () => {
+  const numbs = [];
+  for (i=0; i <=214; i++){
+    numbs[i] = (i+1)
+  }
+  return numbs;
+}
 
 
 
@@ -208,6 +257,14 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 */
   
 //Code Here
+const addTen = (numbers) =>{
+  const newNumbers = numbers.map(function(value) {
+  if (typeof(value) !== 'number'){
+    return parseInt(value,10) + 10}
+    else{return value + 10}})
+  return newNumbers
+  }
+
 
 
 
@@ -233,7 +290,11 @@ for(var i = 0; i < num2; i++){
 */
 
 //Code Here
-
+const longer = (arr1,arr2) => {
+  if (arr1.length > arr2.length) {
+    return arr1
+  } else {return arr2}
+}
 
 
 /*
@@ -245,6 +306,15 @@ for(var i = 0; i < num2; i++){
 */
 
 //Code Here
+const both = (arr1,arr2) =>{
+  let newArray = []
+  for (let i = 0; i < arr1.length; i++){
+    for (let j = 0; j < arr2.length; j++){
+      if (arr1[i] === arr2[j]){newArray.push(arr1[i])}
+    }
+  }
+  return newArray
+}
 
 
 
@@ -285,8 +355,8 @@ var colt = {
 */
 
 //Code Here
-
-
+devMountainEmployees = [tyler, cahlan, ryan, colt]
+console.log(devMountainEmployees.length)
 
 /*
   Now let's say Cahlan has a mental breakdown and has to take a leave of absence to 'find himself'.
@@ -294,6 +364,12 @@ var colt = {
 */
 
 //Code Here
+for (let i = devMountainEmployees.length -1; i > 0 ; i--){
+  if (devMountainEmployees[i].name === 'Cahlan'){
+    devMountainEmployees.splice(i,1)
+    console.log('test', devMountainEmployees)
+  }
+}
 
 
 
@@ -306,7 +382,7 @@ var colt = {
 */
 
 //Code Here
-
+let users = [];
 
 
 /*
@@ -323,8 +399,21 @@ var user1 = {
     username: 'infiniteLoop'
 };
 // Do not edit the code above.
-
 //Code Here
+var user2 = {
+  name:'Bradley Fojas',
+  email: 'fake@email.com',
+  password: 'notReal',
+  username: 'dorkus'
+};
+var user3 = {
+  name: 'Jake Peralta',
+  email: 'jakey@fremulon.com',
+  password: 'noine_noine',
+  username: 'bk99'
+};
+
+users = [user2,user1,user3]
 
 
 
@@ -339,7 +428,11 @@ var user1 = {
 */
 
 //Code Here
-
+for (let i = 0; i < users.length; i++){
+  if (users[i].email === 'tylermcginnis33@gmail.com'){
+    users.splice(i,1)
+  }
+}
 
 
 /*
